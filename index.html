@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Arrive - Lead Details</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Lead Details</h1>
+      <div class="tabs">
+        <button class="tab active">Borrower Info</button>
+        <button class="tab">Mortgage Info</button>
+        <button class="tab">Property Info</button>
+        <button class="tab">Other Info</button>
+        <button class="tab">Additional Questions</button>
+      </div>
+
+      <form id="loan-form">
+        <!-- Borrower Info -->
+        <section class="form-section">
+          <h2>Borrower Info</h2>
+          <div class="form-row">
+            <label>First Name* <input type="text" name="firstName" /></label>
+            <label>Last Name* <input type="text" name="lastName" /></label>
+            <label>Email* <input type="email" name="email" /></label>
+            <label>Cell Phone <input type="tel" name="cellPhone" /></label>
+            <label>SSN* <input type="text" name="ssn" /></label>
+            <label>Date of Birth* <input type="date" name="dob" /></label>
+            <label
+              >Residency Type* <input type="text" name="residencyType"
+            /></label>
+            <label
+              >Marital Status* <input type="text" name="maritalStatus"
+            /></label>
+            <label
+              >No. of Dependents <input type="number" name="dependents"
+            /></label>
+            <label
+              >Dependents Ages <input type="text" name="dependentAges"
+            /></label>
+            <label
+              >Estimated Credit Score <input type="text" name="creditScore"
+            /></label>
+          </div>
+        </section>
+
+        <!-- Mortgage Info -->
+        <section class="form-section">
+          <h2>Mortgage Info</h2>
+          <div class="form-row">
+            <label>Loan Purpose <input type="text" name="loanPurpose" /></label>
+            <label
+              >Appraised Value <input type="number" name="appraisedValue"
+            /></label>
+            <label
+              >Base Loan Amount <input type="number" name="baseLoanAmount"
+            /></label>
+            <label>LTV <input type="text" name="ltv" /></label>
+            <label
+              >Refinance Type <input type="text" name="refinanceType"
+            /></label>
+            <label
+              >Existing Liens Amount <input type="number" name="liensAmount"
+            /></label>
+            <label
+              >Refinance Program <input type="text" name="refinanceProgram"
+            /></label>
+            <label
+              >Mortgage Type <input type="text" name="mortgageType"
+            /></label>
+            <label
+              >Lien Position <input type="text" name="lienPosition"
+            /></label>
+            <label
+              >Total Loan Amount <input type="number" name="totalLoanAmount"
+            /></label>
+            <label
+              >Subordinate Liens <input type="checkbox" name="subLiens"
+            /></label>
+            <label>CLTV <input type="text" name="cltv" /></label>
+            <label>HCLTV <input type="text" name="hcltv" /></label>
+            <label
+              >Amortization Type <input type="text" name="amortizationType"
+            /></label>
+          </div>
+        </section>
+
+        <!-- Property Info -->
+        <!-- Property Info -->
+        <section class="form-section">
+          <h2>Property Info</h2>
+          <div class="form-row">
+            <label>
+              Street Address
+              <input type="text" id="propertyAddress" name="propertyAddress" />
+            </label>
+            <button type="button" onclick="checkZillow()">Check Zillow</button>
+
+            <label>
+              Unit/Apt
+              <input type="text" name="unit" />
+            </label>
+
+            <label>
+              City
+              <input type="text" name="city" id="propertyCity" />
+            </label>
+
+            <label>
+              State
+              <input type="text" name="state" id="propertyState" />
+            </label>
+
+            <label>
+              Zip Code
+              <input type="text" name="zip" />
+            </label>
+
+            <label>
+              County
+              <input type="text" name="county" />
+            </label>
+
+            <label>
+              Occupancy
+              <input type="text" name="occupancy" />
+            </label>
+
+            <label>
+              Property Type
+              <input type="text" name="propertyType" />
+            </label>
+
+            <label>
+              Attachment Type
+              <input type="text" name="attachmentType" />
+            </label>
+
+            <label>
+              Number of Units
+              <input type="number" name="units" />
+            </label>
+          </div>
+        </section>
+
+        <!-- Other Info -->
+        <section class="form-section">
+          <h2>Other Info</h2>
+          <div class="form-row">
+            <label
+              >Lead Provided By <input type="text" name="leadProvidedBy"
+            /></label>
+            <label>Lead Source <input type="text" name="leadSource" /></label>
+            <label
+              >Other Lead Source Description <input type="text" name="leadDesc"
+            /></label>
+            <label
+              >Primary Lead Owner <input type="text" name="primaryOwner"
+            /></label>
+            <label
+              >Additional Owner(s) <input type="text" name="additionalOwner"
+            /></label>
+            <label>DNC Request <input type="text" name="dncRequest" /></label>
+            <label
+              >Email Opt-out <input type="text" name="emailOptOut"
+            /></label>
+            <label>SMS Opt-out <input type="text" name="smsOptOut" /></label>
+          </div>
+        </section>
+
+        <!-- Additional Questions -->
+        <section class="form-section">
+          <h2>Additional Questions</h2>
+          <div class="form-row">
+            <label
+              >Amortization Term (months) <input type="number" name="amortTerm"
+            /></label>
+            <label
+              >Interest Only <input type="checkbox" name="interestOnly"
+            /></label>
+            <label
+              >Impound Waiver <input type="text" name="impoundWaiver"
+            /></label>
+            <label>Loan FICO <input type="text" name="loanFico" /></label>
+            <label
+              >Currently Owning a Home <input type="checkbox" name="ownHome"
+            /></label>
+            <label
+              >Bankruptcy in Last 7 Years
+              <input type="checkbox" name="bankruptcy"
+            /></label>
+            <label
+              >Foreclosure in Last 7 Years
+              <input type="checkbox" name="foreclosure"
+            /></label>
+          </div>
+        </section>
+
+        <!-- Financial Info -->
+        <section class="form-section">
+          <h2>Financial Info</h2>
+          <div class="form-row">
+            <label
+              >Gross Annual Income <input type="number" name="annualIncome"
+            /></label>
+            <label
+              >Total Monthly Liability
+              <input type="number" name="monthlyLiability"
+            /></label>
+            <label>Total Assets <input type="number" name="assets" /></label>
+            <label>Buying Stage <input type="text" name="buyingStage" /></label>
+            <label
+              >Desired Monthly Payment
+              <input type="number" name="desiredPayment"
+            /></label>
+            <label
+              >Remaining Mortgage Balance
+              <input type="number" name="mortgageBalance"
+            /></label>
+            <label
+              >Current Interest Rate <input type="text" name="interestRate"
+            /></label>
+          </div>
+        </section>
+
+        <button type="button" onclick="exportToExcel()">Export to Excel</button>
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
