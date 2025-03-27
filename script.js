@@ -12,3 +12,25 @@ function checkZillow() {
   const url = `https://www.zillow.com/homes/${query}_rb/`;
   window.open(url, "_blank");
 }
+
+function exportToExcel() {
+  const form = document.getElementById("loan-form");
+  const formData = new FormData(form);
+  let csvRows = [["Field", "Value"]]; // Add header row
+
+  formData.forEach((value, key) => {
+    csvRows.push([key, value]);
+  });
+
+  const csvContent = csvRows
+    .map((row) => row.map((item) => `"${item.replace(/"/g, '""')}"`).join(","))
+    .join("\n");
+
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.setAttribute("download", "loan_application.csv");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}

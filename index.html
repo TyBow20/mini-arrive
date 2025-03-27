@@ -5,21 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mini Arrive - Lead Details</title>
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      .toggle-section {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <h1>Lead Details</h1>
+      <h1>Iron Banner Leads</h1>
       <div class="tabs">
-        <button class="tab active">Borrower Info</button>
-        <button class="tab">Mortgage Info</button>
-        <button class="tab">Property Info</button>
-        <button class="tab">Other Info</button>
-        <button class="tab">Additional Questions</button>
+        <button class="tab active" onclick="scrollToSection('borrower-info')">
+          Borrower Info
+        </button>
+        <button class="tab" onclick="scrollToSection('mortgage-info')">
+          Mortgage Info
+        </button>
+        <button class="tab" onclick="scrollToSection('property-info')">
+          Property Info
+        </button>
+        <button class="tab" onclick="scrollToSection('other-info')">
+          Other Info
+        </button>
+        <button class="tab" onclick="scrollToSection('additional-questions')">
+          Additional Questions
+        </button>
       </div>
 
       <form id="loan-form">
         <!-- Borrower Info -->
-        <section class="form-section">
+        <section class="form-section" id="borrower-info">
           <h2>Borrower Info</h2>
           <div class="form-row">
             <label>First Name* <input type="text" name="firstName" /></label>
@@ -35,19 +50,72 @@
               >Marital Status* <input type="text" name="maritalStatus"
             /></label>
             <label
-              >No. of Dependents <input type="number" name="dependents"
-            /></label>
-            <label
-              >Dependents Ages <input type="text" name="dependentAges"
-            /></label>
-            <label
               >Estimated Credit Score <input type="text" name="creditScore"
             /></label>
+            <label>
+              Are you a veteran?
+              <select name="veteranStatus">
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </label>
+            <label
+              >Branch of Service <input type="text" name="militaryBranch"
+            /></label>
+            <label>
+              Status
+              <select name="militaryStatus">
+                <option value="">Select</option>
+                <option value="active">Active</option>
+                <option value="retired">Retired</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            <input
+              type="checkbox"
+              id="toggleCoBorrower"
+              onchange="toggleSection('coBorrowerSection')"
+            />
+            Add Co-Borrower
+          </label>
+          <div id="coBorrowerSection" class="toggle-section">
+            <div class="form-row">
+              <label
+                >Co-Borrower First Name <input type="text" name="coFirstName"
+              /></label>
+              <label
+                >Co-Borrower Last Name <input type="text" name="coLastName"
+              /></label>
+              <label
+                >Co-Borrower Email <input type="email" name="coEmail"
+              /></label>
+              <label
+                >Co-Borrower Phone <input type="tel" name="coPhone"
+              /></label>
+              <label>Co-Borrower SSN <input type="text" name="coSSN" /></label>
+              <label
+                >Co-Borrower Date of Birth <input type="date" name="coDOB"
+              /></label>
+              <label
+                >Co-Borrower Residency Type
+                <input type="text" name="coResidencyType"
+              /></label>
+              <label
+                >Co-Borrower Marital Status
+                <input type="text" name="coMaritalStatus"
+              /></label>
+              <label
+                >Co-Borrower Estimated Credit Score
+                <input type="text" name="coCreditScore"
+              /></label>
+            </div>
           </div>
         </section>
 
-        <!-- Mortgage Info -->
-        <section class="form-section">
+        <section class="form-section" id="mortgage-info">
           <h2>Mortgage Info</h2>
           <div class="form-row">
             <label>Loan Purpose <input type="text" name="loanPurpose" /></label>
@@ -55,130 +123,60 @@
               >Appraised Value <input type="number" name="appraisedValue"
             /></label>
             <label
-              >Base Loan Amount <input type="number" name="baseLoanAmount"
-            /></label>
-            <label>LTV <input type="text" name="ltv" /></label>
-            <label
               >Refinance Type <input type="text" name="refinanceType"
             /></label>
             <label
               >Existing Liens Amount <input type="number" name="liensAmount"
             /></label>
             <label
-              >Refinance Program <input type="text" name="refinanceProgram"
-            /></label>
-            <label
-              >Mortgage Type <input type="text" name="mortgageType"
-            /></label>
-            <label
-              >Lien Position <input type="text" name="lienPosition"
-            /></label>
-            <label
               >Total Loan Amount <input type="number" name="totalLoanAmount"
             /></label>
-            <label
-              >Subordinate Liens <input type="checkbox" name="subLiens"
-            /></label>
-            <label>CLTV <input type="text" name="cltv" /></label>
-            <label>HCLTV <input type="text" name="hcltv" /></label>
-            <label
-              >Amortization Type <input type="text" name="amortizationType"
-            /></label>
           </div>
         </section>
 
-        <!-- Property Info -->
-        <!-- Property Info -->
-        <section class="form-section">
+        <section class="form-section" id="property-info">
           <h2>Property Info</h2>
           <div class="form-row">
-            <label>
-              Street Address
-              <input type="text" id="propertyAddress" name="propertyAddress" />
-            </label>
+            <label
+              >Street Address
+              <input type="text" id="propertyAddress" name="propertyAddress"
+            /></label>
             <button type="button" onclick="checkZillow()">Check Zillow</button>
-
-            <label>
-              Unit/Apt
-              <input type="text" name="unit" />
-            </label>
-
-            <label>
-              City
-              <input type="text" name="city" id="propertyCity" />
-            </label>
-
-            <label>
-              State
-              <input type="text" name="state" id="propertyState" />
-            </label>
-
-            <label>
-              Zip Code
-              <input type="text" name="zip" />
-            </label>
-
-            <label>
-              County
-              <input type="text" name="county" />
-            </label>
-
-            <label>
-              Occupancy
-              <input type="text" name="occupancy" />
-            </label>
-
-            <label>
-              Property Type
-              <input type="text" name="propertyType" />
-            </label>
-
-            <label>
-              Attachment Type
-              <input type="text" name="attachmentType" />
-            </label>
-
-            <label>
-              Number of Units
-              <input type="number" name="units" />
-            </label>
+            <label>Unit/Apt <input type="text" name="unit" /></label>
+            <label
+              >City <input type="text" name="city" id="propertyCity"
+            /></label>
+            <label
+              >State <input type="text" name="state" id="propertyState"
+            /></label>
+            <label>Zip Code <input type="text" name="zip" /></label>
+            <label>County <input type="text" name="county" /></label>
+            <label>Occupancy <input type="text" name="occupancy" /></label>
+            <label
+              >Property Type <input type="text" name="propertyType"
+            /></label>
+            <label>Number of Units <input type="number" name="units" /></label>
           </div>
         </section>
 
-        <!-- Other Info -->
-        <section class="form-section">
+        <section class="form-section" id="other-info">
           <h2>Other Info</h2>
           <div class="form-row">
-            <label
-              >Lead Provided By <input type="text" name="leadProvidedBy"
-            /></label>
             <label>Lead Source <input type="text" name="leadSource" /></label>
-            <label
-              >Other Lead Source Description <input type="text" name="leadDesc"
-            /></label>
             <label
               >Primary Lead Owner <input type="text" name="primaryOwner"
             /></label>
             <label
               >Additional Owner(s) <input type="text" name="additionalOwner"
             /></label>
-            <label>DNC Request <input type="text" name="dncRequest" /></label>
-            <label
-              >Email Opt-out <input type="text" name="emailOptOut"
-            /></label>
-            <label>SMS Opt-out <input type="text" name="smsOptOut" /></label>
           </div>
         </section>
 
-        <!-- Additional Questions -->
-        <section class="form-section">
+        <section class="form-section" id="additional-questions">
           <h2>Additional Questions</h2>
           <div class="form-row">
             <label
               >Amortization Term (months) <input type="number" name="amortTerm"
-            /></label>
-            <label
-              >Interest Only <input type="checkbox" name="interestOnly"
             /></label>
             <label
               >Impound Waiver <input type="text" name="impoundWaiver"
@@ -195,33 +193,144 @@
               >Foreclosure in Last 7 Years
               <input type="checkbox" name="foreclosure"
             /></label>
+            <label
+              >Loan Modification? <input type="checkbox" name="modification"
+            /></label>
           </div>
         </section>
 
-        <!-- Financial Info -->
+        <!-- Employment/Income Details -->
         <section class="form-section">
-          <h2>Financial Info</h2>
-          <div class="form-row">
-            <label
-              >Gross Annual Income <input type="number" name="annualIncome"
-            /></label>
-            <label
-              >Total Monthly Liability
-              <input type="number" name="monthlyLiability"
-            /></label>
-            <label>Total Assets <input type="number" name="assets" /></label>
-            <label>Buying Stage <input type="text" name="buyingStage" /></label>
-            <label
-              >Desired Monthly Payment
-              <input type="number" name="desiredPayment"
-            /></label>
-            <label
-              >Remaining Mortgage Balance
-              <input type="number" name="mortgageBalance"
-            /></label>
-            <label
-              >Current Interest Rate <input type="text" name="interestRate"
-            /></label>
+          <h2>Income & Employment Details</h2>
+          <label>
+            <input
+              type="checkbox"
+              id="toggleBorrowerIncome"
+              onchange="toggleSection('borrowerIncomeSection')"
+              checked
+            />
+            Show Borrower Income
+          </label>
+          <div
+            id="borrowerIncomeSection"
+            class="toggle-section"
+            style="display: block"
+          >
+            <div class="form-row">
+              <label
+                >Income Type* <input type="text" name="incomeType"
+              /></label>
+              <label
+                ><input type="checkbox" name="currentEmployment" checked />
+                Current</label
+              >
+              <label
+                ><input type="checkbox" name="primaryEmployment" checked />
+                Primary</label
+              >
+              <label
+                >Employer Name* <input type="text" name="employerName"
+              /></label>
+              <label
+                >Employer Address <input type="text" name="employerAddress"
+              /></label>
+              <label
+                >Position or Title* <input type="text" name="position"
+              /></label>
+              <label
+                >Employer Contact No.*
+                <input type="text" name="employerContact"
+              /></label>
+              <label>Start Date* <input type="date" name="startDate" /></label>
+              <label>End Date <input type="date" name="endDate" /></label>
+              <label
+                >Employment Duration (Years)
+                <input type="number" name="durationYears"
+              /></label>
+              <label
+                >Employment Duration (Months)
+                <input type="number" name="durationMonths"
+              /></label>
+            </div>
+
+            <h3>Gross Monthly Income</h3>
+            <div class="form-row">
+              <label
+                ><input type="checkbox" name="selfEmployed" /> Business owner or
+                Self-Employed?</label
+              >
+              <label
+                ><input type="radio" name="incomeMode" value="Salary" checked />
+                Salary</label
+              >
+              <label
+                ><input type="radio" name="incomeMode" value="Hourly" />
+                Hourly</label
+              >
+              <label
+                >Base Income*
+                <input type="number" name="baseIncome" class="income-input"
+              /></label>
+              <label
+                >Bonus <input type="number" name="bonus" class="income-input"
+              /></label>
+              <label
+                >Commissions
+                <input type="number" name="commissions" class="income-input"
+              /></label>
+              <label
+                >Overtime
+                <input type="number" name="overtime" class="income-input"
+              /></label>
+              <label
+                >Other
+                <input type="number" name="otherIncome" class="income-input"
+              /></label>
+              <label
+                ><input type="checkbox" name="seasonalIncome" /> Seasonal
+                Income</label
+              >
+              <label
+                ><input type="checkbox" name="foreignIncome" /> Foreign
+                Income</label
+              >
+              <label
+                ><input type="checkbox" name="familyEmployer" /> Employed by
+                family/seller/etc.</label
+              >
+              <label
+                >Total Monthly Income:
+                <input type="text" id="monthlyTotal" readonly
+              /></label>
+            </div>
+          </div>
+
+          <label>
+            <input
+              type="checkbox"
+              id="toggleCoIncome"
+              onchange="toggleSection('coIncomeSection')"
+            />
+            Add Co-Borrower Income
+          </label>
+          <div id="coIncomeSection" class="toggle-section">
+            <div class="form-row">
+              <label
+                >Co-Borrower Income Type <input type="text" name="coIncomeType"
+              /></label>
+              <label
+                >Co-Borrower Employer <input type="text" name="coEmployer"
+              /></label>
+              <label
+                >Base Income <input type="number" name="coBaseIncome"
+              /></label>
+              <label>Bonus <input type="number" name="coBonus" /></label>
+              <label
+                >Commissions <input type="number" name="coCommissions"
+              /></label>
+              <label>Overtime <input type="number" name="coOvertime" /></label>
+              <label>Other <input type="number" name="coOtherIncome" /></label>
+            </div>
           </div>
         </section>
 
@@ -229,6 +338,32 @@
       </form>
     </div>
 
+    <script>
+      function toggleSection(id) {
+        const section = document.getElementById(id);
+        section.style.display =
+          section.style.display === "none" ? "block" : "none";
+      }
+
+      const incomeInputs = document.querySelectorAll(".income-input");
+      incomeInputs.forEach((input) => {
+        input.addEventListener("input", calculateMonthlyIncome);
+      });
+
+      function calculateMonthlyIncome() {
+        let total = 0;
+        document.querySelectorAll(".income-input").forEach((input) => {
+          total += parseFloat(input.value) || 0;
+        });
+        document.getElementById("monthlyTotal").value = `$${total.toFixed(2)}`;
+      }
+      function scrollToSection(id) {
+        const section = document.getElementById(id);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+    </script>
     <script src="script.js"></script>
   </body>
 </html>
